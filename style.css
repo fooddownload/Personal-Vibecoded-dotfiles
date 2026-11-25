@@ -1,0 +1,195 @@
+* {
+    font-family: "Maple Mono NF", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+/* Transparent bar frame so individual islands float cleanly */
+window#waybar {
+    background: transparent;
+    color: #e2e8f0;
+}
+
+tooltip {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+tooltip label {
+    color: #e2e8f0;
+}
+
+/* Shared floating island styling */
+#workspaces,
+#window,
+#clock,
+#hardware,
+#pulseaudio,
+#connectivity,
+#battery,
+#tray {
+    background-color: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 12px;
+    padding: 0 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Workspaces island + Open Sans numbers */
+#workspaces {
+    padding: 3px 5px;
+}
+
+#workspaces button {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #64748b;
+    background-color: transparent;
+    padding: 0 9px;
+    margin: 0 2px;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#workspaces button:hover {
+    background-color: rgba(56, 189, 248, 0.14);
+    color: #e2e8f0;
+}
+
+/* Active workspace expands into a bright gradient pill */
+#workspaces button.active {
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    color: #090d16;
+    padding: 0 16px;
+}
+
+#workspaces button.urgent {
+    background-color: #f43f5e;
+    color: #ffffff;
+}
+
+/* Active window title */
+#window {
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Center clock pill */
+#clock {
+    color: #f8fafc;
+    font-weight: 600;
+    border: 1px solid rgba(56, 189, 248, 0.32);
+}
+
+/* Grouped hardware telemetry island */
+#hardware {
+    padding: 0 6px;
+}
+
+#cpu,
+#memory,
+#temperature {
+    padding: 0 8px;
+}
+
+#cpu {
+    color: #38bdf8;
+}
+
+#memory {
+    color: #c084fc;
+}
+
+#temperature {
+    color: #34d399;
+}
+
+#temperature.critical {
+    color: #f43f5e;
+    font-weight: 700;
+}
+
+/* Pulseaudio pill */
+#pulseaudio {
+    color: #fbbf24;
+}
+
+#pulseaudio.muted {
+    color: #64748b;
+}
+
+/* Grouped Wi-Fi + Bluetooth pill */
+#connectivity {
+    padding: 0 6px;
+}
+
+#network,
+#bluetooth {
+    padding: 0 8px;
+    font-size: 14px;
+    transition: color 0.15s ease;
+}
+
+#network {
+    color: #38bdf8;
+}
+
+#network.disconnected {
+    color: #f43f5e;
+}
+
+#bluetooth {
+    color: #818cf8;
+}
+
+#bluetooth.connected {
+    color: #38bdf8;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: #64748b;
+}
+
+/* Battery pill */
+#battery {
+    color: #4ade80;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #22d3ee;
+}
+
+#battery.warning:not(.charging) {
+    color: #fbbf24;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f43f5e;
+    color: #ffffff;
+    border-color: #fb7185;
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
