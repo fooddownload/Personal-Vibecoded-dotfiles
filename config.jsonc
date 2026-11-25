@@ -9,7 +9,9 @@
 
     "modules-left": [
         "niri/workspaces",
-        "niri/window"
+        "hyprland/workspaces",
+        "niri/window",
+        "hyprland/window"
     ],
     "modules-center": [
         "clock"
@@ -27,7 +29,23 @@
         "all-outputs": true
     },
 
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "all-outputs": true,
+        "on-click": "activate",
+        "persistent-workspaces": {}
+    },
+
     "niri/window": {
+        "format": "  {title}",
+        "max-length": 42,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Desktop"
+        }
+    },
+
+    "hyprland/window": {
         "format": "  {title}",
         "max-length": 42,
         "separate-outputs": true,
