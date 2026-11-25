@@ -1,0 +1,145 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 14,
+    "margin-right": 14,
+
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "group/hardware",
+        "pulseaudio",
+        "group/connectivity",
+        "battery",
+        "tray"
+    ],
+
+    "niri/workspaces": {
+        "format": "{index}",
+        "all-outputs": true
+    },
+
+    "niri/window": {
+        "format": "  {title}",
+        "max-length": 42,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Desktop"
+        }
+    },
+
+    "clock": {
+        "format": "  {:%I:%M %p  •  %a, %d %b}",
+        "format-alt": "  {:%Y-%m-%d  %H:%M:%S}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#c084fc'><b>{}</b></span>",
+                "days": "<span color='#e2e8f0'>{}</span>",
+                "weeks": "<span color='#64748b'>W{}</span>",
+                "weekdays": "<span color='#38bdf8'><b>{}</b></span>",
+                "today": "<span color='#0f172a' background='#38bdf8'><b> {} </b></span>"
+            }
+        }
+    },
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+            "temperature"
+        ]
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "  {used:0.1f}G"
+    },
+
+    "temperature": {
+        "critical-threshold": 82,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": " {volume}%",
+        "format-muted": "  Muted",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "modules": [
+            "network",
+            "bluetooth"
+        ]
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\nIP: {ipaddr}/{cidr}\nDown: {bandwidthDownBytes}  Up: {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Wi-Fi Disconnected",
+        "on-click": "nm-connection-editor",
+        "on-click-right": "ghostty -e nmtui"
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-connected": "",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "tooltip-format": "Bluetooth: {status}",
+        "tooltip-format-connected": "Connected: {device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "blueman-manager",
+        "on-click-right": "ghostty -e bluetui"
+    },
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    }
+}
